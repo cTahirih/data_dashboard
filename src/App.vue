@@ -9,14 +9,38 @@
             i.fas.fa-search.px-2
       .header__nav--left.column
         .row
-          p.header__nav--text.my-0.column.small-8.text-right
+          p.header__nav--text.name.my-0.column.small-8
             i.far.fa-user.px-2
             | Hola {{ name }}
           p.header__nav--icon.my-0.column.small-2.text-right
             i.far.fa-bell
           p.header__nav--icon.my-0.column.small-2.text-right
-            i.fas.fa-bars.px-2
-    .main.row
+            i.fas.fa-bars.px-2(
+              @click="showAsideMenu = true",
+              :class="[showAsideMenu == true ? 'is-hide': '']"
+            )
+            i.far.fa-window-close( 
+              @click="showAsideMenu = false",
+              :class="[showAsideMenu == true ? '': 'is-hide']"
+            )
+    transition(name="fade")
+      aside.aside__slider.active(v-show="showAsideMenu")
+        .aside__slider--content
+          span.aside__slider-boxIcon
+            i.fas.fa-star.aside__box--icon
+          span         
+            | Planner Board
+        p Filter by Board
+        .aside__slider--content
+          input(type="checkbox")         
+          label Planner Board 
+        .aside__slider--content
+          input(type="checkbox")
+          label Summary Board
+        .aside__slider--content
+          input(type="checkbox")
+          label Internal Board
+    .main.column
       | First page
 </template>
 
@@ -25,11 +49,16 @@ export default {
   name: 'App',
   data() {
     return {
-      name: 'Rosa'
+      name: 'Rosa',
+      showAsideMenu: false
     }
   },
 
   mounted() {
+  
+  },
+
+  methods: {
 
   }
 }
@@ -37,6 +66,18 @@ export default {
 
 <style>
   @import '../static/css/layout.css'; 
+
+  .active {
+    display: block;
+  }
+
+  .is-hide {
+    display: none;
+  }
+
+  .name {
+    text-align: left;
+  }
 
   .header__nav {
     background: #fff;
@@ -50,8 +91,38 @@ export default {
   .header__nav--left, .header__nav--right  {
     padding: 5px 0;
   }
+  
+  .aside__slider-boxIcon {
+    background-color: #0079bf;
+    border-radius: 5px;
+    padding: 3px;
+    width: 26px;
+  }
+
+  .aside__box--icon {
+    color: white;
+  }
+
+  .aside__slider {
+    min-width: 100px;
+    background: white;
+    border-top: 2px solid orangered;
+    min-height: 100vh;
+  }
+
+  .aside__slider--content {
+    padding: 15px 4px;
+  }
+
+  .main {
+    min-height: 100vh;
+  }
 
   @media print, screen and (min-width: 40em) {
+    .name {
+      text-align: right;
+    }
+
     .header__nav--right {
       display: block;
     }
@@ -77,7 +148,14 @@ export default {
       padding: 0;
     }
 
+    .aside__slider {
+      min-width: 250px;
+      min-height: 90vh;
+    }
 
+    .main {
+      min-height: 90vh;
+    }
   }
 
   
