@@ -51,9 +51,56 @@
               i.fas.fa-star.aside__box--icon
             span         
               | Planner Board - Summary
+
+      .row.main__header
+        .main__header--box.small-6.medium-2
+          p.main__header--title.my-0 NEW CLIENTS
+          span.main__header--span Last 7 days
+          p.main__header--textLarge.text-center.my-0 25
+        .main__header--box.small-6.medium-2
+          p NEW CLIENTS
+          span Last 7 days
+          p.text-center 25
+        .main__header--box.small-6.medium-2
+          p NEW CLIENTS
+          span Last 7 days
+          p.text-center 25  
+        .main__header--box.small-6.medium-2
+          p NEW CLIENTS
+          span Last 7 days
+          p.text-center 25
+        .main__header--box.small-6.medium-2
+          p NEW CLIENTS
+          span Last 7 days
+          p 25
+        .main__header--box.small-6.medium-2
+          p NEW CLIENTS
+          span Last 7 days
+          p 25                    
+      .row
+        .column.small-12.medium-3
+          .main__card
+            p caja
+
+        .column.small-12.medium-6
+          .main__card
+            p caja
+
+        .column.small-12.medium-3
+          .main__card
+            p caja
+      .row
+        .column.small-12.medium-6
+          .main__card
+            p caja
+        .column.small-12.medium-6
+          .main__card
+            p caja
+          
 </template>
 
 <script>
+import Chart from 'chart.js';
 export default {
   name: 'App',
   data() {
@@ -156,7 +203,7 @@ export default {
     min-height: 100vh;
     position: fixed;
     z-index: 10000;
-    margin-top: 24px;
+    top: 50px;
   }
 
   .aside__slider--content {
@@ -166,6 +213,35 @@ export default {
   .main {
     min-height: 100vh;
   }
+
+  .main__header {
+    background-color: #b7d84b;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+  }
+
+  .main__header--title {
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .main__header--span {
+    font-size: 13px;
+  }
+
+  .main__header--textLarge {
+    font-size: 30px;
+  }
+
+  .main__card {
+    background: white;
+    border-radius: 5px;
+    padding: 4px 10px;
+    margin: 2px;
+  }
+
+
 
   @media print, screen and (min-width: 40em) {
     .name {
@@ -185,7 +261,7 @@ export default {
       min-width: 250px;
       min-height: 90vh;
       position: relative;
-      margin-top: 0;
+      top: 0;
     }
 
     .main {
