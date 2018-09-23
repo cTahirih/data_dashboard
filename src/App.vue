@@ -64,14 +64,15 @@
         .column.small-12.medium-4
           .main__card.text-center
             i.fas.fa-3x.fa-chart-line
-            p.main__header--textLarge.my-0 All Income
             p Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.
         .column.small-12.medium-4
-          .main__card
-            p caja 
+          .main__card.text-center
+            i.fas.fa-3x.fa-dollar-sign
+            p Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.
         .column.small-12.medium-4
-          .main__card
-            p caja        
+          .main__card.text-center
+            i.fas.fa-3x.fa-chart-line
+            p Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.       
       .row
         .column.small-12.medium-4
           .main__card
@@ -79,14 +80,10 @@
 
         .column.small-12.medium-8
           .main__card
-            LineChart
-
-
-          
+            LineChart          
 </template>
 
 <script>
-import axios from 'axios'
 import LineChart from "./components/LineChart.js"
 import DonChart from "./components/DonutChart.js"
 
@@ -159,26 +156,9 @@ export default {
           total: 10
         }                
       ],
+      dataUpdates: ''
     }
   },
-
-  created() {
-    axios.get('https://swapi.co/api/people/?format=json')
-      .then(response => {
-        let res = response;
-        console.log(response)
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  },
-  mounted() {
-    
-  },
-
-  methods: {
-
-  }
 }
 </script>
 
@@ -294,6 +274,11 @@ export default {
     margin: 2px;
   }
 
+  .main__card--list {
+    border-radius: 5px;
+    border: 1px solid orange;
+    margin: 3px 0;
+  }
 
 
   @media print, screen and (min-width: 40em) {
