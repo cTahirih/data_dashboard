@@ -60,34 +60,42 @@
             p.main__header--title.my-0 {{ item.title }}
             span.main__header--span {{ item.date }}
             p.main__header--textLarge.text-center.my-0 {{ item.total }}
-                    
       .row
-        .column.small-12.medium-3
+        .column.small-12.medium-4
+          .main__card.text-center
+            i.fas.fa-3x.fa-chart-line
+            p.main__header--textLarge.my-0 All Income
+            p Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.
+        .column.small-12.medium-4
           .main__card
-
-        .column.small-12.medium-6
+            p caja 
+        .column.small-12.medium-4
           .main__card
-            p caja
-
-        .column.small-12.medium-3
-          .main__card
-            p caja
+            p caja        
       .row
-        .column.small-12.medium-6
+        .column.small-12.medium-4
           .main__card
-            p caja
-        .column.small-12.medium-6
+            DonChart
+
+        .column.small-12.medium-8
           .main__card
-            p caja
+            LineChart
+
+
           
 </template>
 
 <script>
-import axios from 'axios';
+import axios from 'axios'
+import LineChart from "./components/LineChart.js"
+import DonChart from "./components/DonutChart.js"
 
 export default {
   name: 'App',
-  
+  components: {
+    LineChart,
+    DonChart
+  }, 
   data() {
     return {
       name: 'Rosa',
@@ -158,7 +166,7 @@ export default {
     axios.get('https://swapi.co/api/people/?format=json')
       .then(response => {
         let res = response;
-        
+        console.log(response)
       })
       .catch(e => {
         console.log(e);
@@ -243,7 +251,7 @@ export default {
     min-height: 100vh;
     position: fixed;
     z-index: 10000;
-    top: 50px;
+    top: 46px;
   }
 
   .aside__slider--content {
