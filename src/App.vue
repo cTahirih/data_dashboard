@@ -53,34 +53,17 @@
               | Planner Board - Summary
 
       .row.main__header
-        .main__header--box.small-6.medium-2
-          p.main__header--title.my-0 NEW CLIENTS
-          span.main__header--span Last 7 days
-          p.main__header--textLarge.text-center.my-0 25
-        .main__header--box.small-6.medium-2
-          p NEW CLIENTS
-          span Last 7 days
-          p.text-center 25
-        .main__header--box.small-6.medium-2
-          p NEW CLIENTS
-          span Last 7 days
-          p.text-center 25  
-        .main__header--box.small-6.medium-2
-          p NEW CLIENTS
-          span Last 7 days
-          p.text-center 25
-        .main__header--box.small-6.medium-2
-          p NEW CLIENTS
-          span Last 7 days
-          p 25
-        .main__header--box.small-6.medium-2
-          p NEW CLIENTS
-          span Last 7 days
-          p 25                    
+        .main__header--box.row.small-6.medium-2(v-for="item in overview")
+          .icon
+            i(:class="`${item.iconClass}`")
+          .info
+            p.main__header--title.my-0 {{ item.title }}
+            span.main__header--span {{ item.date }}
+            p.main__header--textLarge.text-center.my-0 {{ item.total }}
+                    
       .row
         .column.small-12.medium-3
           .main__card
-            p caja
 
         .column.small-12.medium-6
           .main__card
@@ -100,9 +83,11 @@
 </template>
 
 <script>
-import Chart from 'chart.js';
+import axios from 'axios';
+
 export default {
   name: 'App',
+  
   data() {
     return {
       name: 'Rosa',
@@ -120,12 +105,67 @@ export default {
           id: 'third_filter',
           value: 'Internal Board'
         },
-      ]
+      ],
+
+      overview: [
+        {
+          id: 1,
+          title: 'TOTAL CUSTOMERS',
+          date: 'Last 7 days',
+          iconClass: 'far fa-user px-2',
+          total: 35
+        },
+        {
+          id: 2,
+          title: 'NEW QUOTES',
+          date: 'Last 5 days',
+          iconClass: 'far fa-user px-2',
+          total: 23
+        },
+        {
+          id: 3,
+          title: 'WORK ORDERS',
+          date: 'Last 2 days',
+          iconClass: 'far fa-user px-2',
+          total: 13
+        },
+        {
+          id: 4,
+          title: 'NEW INVOICES',
+          date: 'Last 7 hours',
+          iconClass: 'far fa-user px-2',
+          total: 78
+        },
+        {
+          id: 5,
+          title: 'OPEN CASES',
+          date: 'Last 7 days',
+          iconClass: 'far fa-user px-2',
+          total: 12
+        },
+        {
+          id: 6,
+          title: 'NEW CASES',
+          date: 'Last 1 day',
+          iconClass: 'far fa-user px-2',
+          total: 10
+        }                
+      ],
     }
   },
 
+  created() {
+    axios.get('https://swapi.co/api/people/?format=json')
+      .then(response => {
+        let res = response;
+        
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  },
   mounted() {
-  
+    
   },
 
   methods: {
@@ -215,23 +255,28 @@ export default {
   }
 
   .main__header {
-    background-color: #b7d84b;
+    background-color: #44accf;
     padding: 10px;
     border-radius: 5px;
     margin: 10px 0;
+    color: white;    
+  }
+
+  .main__header--box {
+    justify-content: center;
   }
 
   .main__header--title {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 12px;
   }
 
   .main__header--span {
-    font-size: 13px;
+    font-size: 10px;
   }
 
   .main__header--textLarge {
-    font-size: 30px;
+    font-size: 45px;
   }
 
   .main__card {
